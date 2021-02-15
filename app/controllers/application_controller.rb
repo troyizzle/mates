@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-  default_form_builder ApplicationFormBuilde
+  default_form_builder ApplicationFormBuilder
 end
