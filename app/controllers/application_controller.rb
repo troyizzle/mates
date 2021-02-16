@@ -8,15 +8,15 @@ class ApplicationController < ActionController::Base
   private
 
   def set_theme
-    session[:user_theme] = current_theme
+    cookies[:user_theme] = current_theme
   end
 
   def user_theme
-    @user_theme = session[:user_theme]
+    @user_theme = cookies[:user_theme]
   end
 
   def current_theme
-    return session[:user_theme] if session[:user_theme].present?
+    return cookies[:user_theme] if cookies[:user_theme].present?
 
     # TODO: 'Add profile with theme type'
     current_user ? 'dark' : 'dark'

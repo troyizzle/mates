@@ -15,6 +15,7 @@ export default class extends Controller {
     }
 
     toggleTheme() {
-
+      const current_theme = window.localStorage.getItem("color-theme");
+      console.log(current_theme);
     }
 }
