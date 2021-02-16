@@ -13,4 +13,8 @@ export default class extends Controller {
     isMenuOpen() {
         return this.menuTarget.hasAttribute("hidden");
     }
+
+    toggleTheme() {
+
+    }
 }

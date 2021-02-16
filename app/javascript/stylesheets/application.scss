@@ -24,3 +24,7 @@
   --color-text-secondary: #4a5568;
   --color-text-accent: #2b6cb0;
 }
+
+.menu-dropdown-links {
+  @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100;
+}
