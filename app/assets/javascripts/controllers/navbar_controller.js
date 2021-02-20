@@ -14,8 +14,16 @@ export default class extends Controller {
         return this.menuTarget.hasAttribute("hidden");
     }
 
-    toggleTheme() {
-      const current_theme = window.localStorage.getItem("color-theme");
-      console.log(current_theme);
+    toggleUserTheme(e) {
+        e.preventDefault();
+
+        Rails.ajax({
+            type: "post",
+            url: e.currentTarget.dataset.url,
+            success: function(data) {
+                document.getElementsByTagName("HTML")[0].className = data.theme;
+                document.getElementById("menu").innerHTML = data.template;
+            }
+        })
     }
 }

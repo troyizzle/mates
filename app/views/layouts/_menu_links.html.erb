@@ -1,0 +1,10 @@
+<% user_theme = defined?(theme) ? theme : cookies[:theme] %>
+
+<% toggle_theme = user_theme == 'dark' ? ' Toggle Theme to Light' : 'Toggle Theme to Dark' %>
+<%= link_to fa_icon('adjust', text: toggle_theme, right: true), '#', class: 'menu-dropdown-links', data: { action: 'navbar#toggleUserTheme',  url: users_toggle_theme_path } %>
+<% if current_user %>
+  <%= link_to 'Sign out', destroy_user_session_path, class: 'menu-dropdown-links', method: :delete %>
+<% else %>
+  <%= link_to 'Sign In', new_user_session_path, class: 'menu-dropdown-links' %>
+  <%= link_to 'Sign Up', new_user_registration_path, class: 'menu-dropdown-links' %>
+<% end %>

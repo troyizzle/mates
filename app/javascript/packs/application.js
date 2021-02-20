@@ -4,6 +4,8 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
+import "@fortawesome/fontawesome-free/css/all"
+window.Rails = Rails;
 import "@hotwired/turbo-rails"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
