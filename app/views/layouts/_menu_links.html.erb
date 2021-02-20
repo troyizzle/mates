@@ -1,7 +1,12 @@
 <% user_theme = defined?(theme) ? theme : cookies[:theme] %>
 
-<% toggle_theme = user_theme == 'dark' ? ' Toggle Theme to Light' : 'Toggle Theme to Dark' %>
-<%= link_to fa_icon('adjust', text: toggle_theme, right: true), '#', class: 'menu-dropdown-links', data: { action: 'navbar#toggleUserTheme',  url: users_toggle_theme_path } %>
+<div class="menu-dropdown-links">
+  <label for="toggle" class="text-gray-700">Dark mode</label>
+  <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+      <input type="checkbox" data-action="navbar#toggleUserTheme" data-url= <%= users_toggle_theme_path %> <%= user_theme == 'dark' ? 'checked' : '' %> name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-3 appearance-none cursor-pointer"/>
+      <label for="toggle" data-action="navbar#toggleUserTheme" data-url= <%= users_toggle_theme_path %> class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+   </div>
+</div>
 <% if current_user %>
   <%= link_to 'Sign out', destroy_user_session_path, class: 'menu-dropdown-links', method: :delete %>
 <% else %>

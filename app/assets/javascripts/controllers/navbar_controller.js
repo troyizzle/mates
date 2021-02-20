@@ -15,6 +15,7 @@ export default class extends Controller {
     }
 
     toggleUserTheme(e) {
+        console.log("hello");
         e.preventDefault();
 
         Rails.ajax({
