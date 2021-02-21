@@ -2,7 +2,21 @@
     <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
         <div class="bg-white dark:bg-gray-800 px-6 py-8 rounded shadow-md text-black w-full">
             <h1 class="mb-8 text-3xl text-center dark:text-white">Sign up</h1>
-                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), id: dom_id(resource), data: { turbo: false }) do |f| %>
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
+                  <%= f.fields_for :profile, resource.build_user_profile do |f| %>
+                      <div class="flex flex-col items-center justify-center py-3 center mx-auto">
+                          <div class="bg-gray px-4 py-5 rounded-lg shadow-lg text-center w-48">
+                              <div class="mb-4">
+                                  <% avatar_image = session['devise.discord_data'].present? ? session['devise.discord_data']['info']['image'] :  'https://i1.pngguru.com/preview/137/834/449/cartoon-cartoon-character-avatar-drawing-film-ecommerce-facial-expression-png-clipart.jpg' %>
+                              <img id="avatarImg" data-target="registration.avatar" class="w-auto mx-auto rounded-full object-cover object-center" src="<%= avatar_image %>" alt="Avatar Upload" />
+                          </div>
+                          <label class="cursor-pointer mt-6">
+                              <span class="mt-2 text-base leading-normal px-4 py-2 bg-blue-500 text-white text-sm rounded-full">Select Avatar</span>
+                              <%= f.file_field :avatar, class: 'hidden', data: { action: 'registration#updateAvatar' } %>
+                          </label>
+                          </div>
+                      </div>
+                  <% end %>
                     <%= f.error_explanation %>
                     <%= f.tw_text_field :username, { placeholder: 'Username' } %>
                     <%= f.tw_email_field :email, { autocomplete: 'email', placeholder: 'Email' } %>

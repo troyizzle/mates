@@ -2,7 +2,7 @@ module ApplicationHelper
   def display_user_avatar(user, size = 40)
     return default_image_avatar unless user.present?
 
-    return default_image_avatar
+    return unless user&.profile&.avatar&.attached?
 
     image_avatar(user.profile.avatar.variant(resize: "#{size}x#{size}!"))
   end
