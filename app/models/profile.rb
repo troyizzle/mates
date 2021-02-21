@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'open-uri'
+
 class Profile < ApplicationRecord
   belongs_to :user
   validates :user, presence: true

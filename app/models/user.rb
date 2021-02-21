@@ -5,7 +5,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :trackable
+         :trackable, :omniauthable,
+         omniauth_providers: %i[discord]
 
   validates :username, uniqueness: true, presence: true
   has_one :profile, dependent: :destroy
@@ -18,6 +19,18 @@ class User < ApplicationRecord
     else
       Rails.logger.info("Unknown auth: #{auth.inspect}")
       nil
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if session['devise.discord_data']
+        devise_data = session['devise.discord_data']
+        info = devise_data['info']
+        user.email = info['email']
+        profile = user.build_user_profile
+        profile.update_from_discord(info)
+      end
     end
   end
 

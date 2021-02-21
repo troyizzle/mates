@@ -1,0 +1,17 @@
+language: ruby
+before_install: gem install bundler
+
+rvm:
+  - 2.3.0
+  - 2.2
+  - 2.1
+  - 2.0
+  - jruby-head
+  - rbx-2
+  
+gemfile:
+  - Gemfile
+
+notifications:
+  email: false
+
