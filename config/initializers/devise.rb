@@ -310,8 +310,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :discord,
-                  Rails.application.credentials.dig(:discord, :client_id),
-                  Rails.application.credentials.dig(:discord, :secret_id)
+                  Rails.application.credentials.discord[:client_id],
+                  Rails.application.credentials.discord[:secret_id]
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
