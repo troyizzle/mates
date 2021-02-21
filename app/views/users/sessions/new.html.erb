@@ -18,6 +18,13 @@
                 <%= f.submit 'Login', class: 'w-full text-center py-3 rounded bg-indigo-600 text-white hover:bg-green-dark focus:outline-none my-1' %>
             <% end %>
         </div>
+
+        <div class="mb-3 text-grey-dark dark:text-white">
+            Sign in with
+        </div>
+        <div class="justify-between">
+            <%= link_to tag.i('', class: 'fab fa-discord fa-2x'), user_discord_omniauth_authorize_path %>
+        </div>
     </div>
   </div>
 </div>
