@@ -1,5 +1,6 @@
-set :application, 'myapp'
+set :application, 'mates'
 set :repo_url, 'git@github.com:troyizzle/mates.git'
+set :branch, 'main'
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"
